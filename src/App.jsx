@@ -1,11 +1,12 @@
 import React from "react";
+import Navbar from "./components/Navbar";
 
 const App = () => {
 
   return (
-    <>
-      <div>Welcome to planetarium</div>
-    </>
+    <section>
+      <Navbar />
+    </section>
   );
 }
 
