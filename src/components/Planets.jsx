@@ -99,27 +99,21 @@ const Saturn = () => {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Canvas>
-        {/* Lighting */}
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />
-
-        {/* Saturn Sphere */}
         <mesh>
           <sphereGeometry args={[1, 90, 90]} />
           <meshStandardMaterial map={texture} />
         </mesh>
 
-        {/* Saturn Rings */}
         <mesh rotation={[Math.PI / 2, 0, 0]}>
-          <ringGeometry args={[1.2, 1.8, 64]} />
+          <ringGeometry args={[1.2, 2, 128, 16]} />
           <meshStandardMaterial
             map={texture2}
             side={THREE.DoubleSide}
             transparent={true}
           />
         </mesh>
-
-        {/* Orbit Controls */}
         <OrbitControls />
       </Canvas>
     </div>
