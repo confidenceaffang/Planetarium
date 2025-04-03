@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
   return (
-    <section className="flex items-center bg-gray-800 justify-center h-screen w-screen ">
+    <section className="overflow-hidden flex items-center bg-gray-800 justify-center h-screen w-screen ">
       <div className="p-8 rounded-l  w-96">
         <div className="flex justify-center items-center">
           <img src={logo} width={120} alt="Logo" />
@@ -14,7 +14,7 @@ const Signup = () => {
           Get Started
         </h2>
         <h3 className="text-center text-gray-300 mb-5">
-          Log in to Planetarium to continue to Dashboard.
+          Log in to Planetarium to continue to Dashboard
         </h3>
         <div className="mb-4">
           <input

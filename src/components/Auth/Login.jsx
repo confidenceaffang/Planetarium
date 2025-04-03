@@ -5,30 +5,38 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <section className="flex items-center bg-gray-800 justify-center h-screen w-screen ">
-      <div className="p-8 rounded-l  w-96">
-        <div class="flex justify-center items-center">
-          <img src={logo} width={120} alt="Logo" />
+    <section className="overflow-hidden flex text-white items-center bg-black justify-center h-screen w-screen ">
+      <div className="p-4 rounded-l w-96">
+        <h1 className="text-4xl text-white mb-10 text-center font-bold text-center mb-6">
+          Welcome Back
+        </h1>
+        <div className="flex mb-1 ">
+          <button className=" flex mt-5 border-2 w-full items-center text-white justify-center py-3 rounded-full font-semibold">
+            <FcGoogle className="mr-3 flex flex-row text-2xl text-center justify-center items-center text-center " />
+            Continue with Google
+          </button>
         </div>
-        <h2 className="text-2xl text-center font-bold text-center mb-6">
-          Welcome
-        </h2>
-        <h3 className="text-center text-gray-300 mb-5">
-          Log in to Planetarium to continue to Dashboard.
-        </h3>
+        <div className="flex mb-10 ">
+          <button className=" flex mt-5 border-2 text-white text-center w-full items-center justify-center py-3 rounded-full font-semibold">
+            Continue with Phone Number
+          </button>
+        </div>
+
         <div className="mb-4">
+          <label className="mb-10 text-sm text-white">Email or username</label>
           <input
             type="email"
-            placeholder="Email address*"
-            className="w-full border-2 p-3 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Email or username"
+            className="w-full border-2 p-3 bg-black rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
 
         <div className="mb-4">
+          <label className="mb-10 text-sm text-white">Password</label>
           <input
             type="password"
-            placeholder="Password*"
-            className="w-full border-2 p-3 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Password"
+            className="w-full border-2 p-3 bg-black rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <Link>
@@ -39,21 +47,12 @@ const Login = () => {
           Continue
         </button>
         <div className="mt-5">
-          <h2>
+          <h2 className="text-white text-sm">
             Don't have an account?
             <Link to="/signup">
               <span className="text-blue-600"> Sign up </span>
             </Link>
           </h2>
-        </div>
-        <div className="mt-5 ">
-          <h3 className="text-center">OR</h3>
-        </div>
-        <div className="flex ">
-          <button className=" flex mt-5 border-2 rounded-l w-full items-center justify-center py-3 rounded-xl font-semibold">
-            <FcGoogle className="mr-3 flex flex-row text-2xl text-center justify-center items-center text-center " />
-            Continue with Google
-          </button>
         </div>
       </div>
     </section>
