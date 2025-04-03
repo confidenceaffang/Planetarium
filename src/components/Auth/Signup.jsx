@@ -1,17 +1,17 @@
 import React from "react";
-import { FcGoogle } from "react-icons/fc";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
-const Login = () => {
+const Signup = () => {
   return (
     <section className="flex items-center bg-gray-800 justify-center h-screen w-screen ">
       <div className="p-8 rounded-l  w-96">
-        <div class="flex justify-center items-center">
+        <div className="flex justify-center items-center">
           <img src={logo} width={120} alt="Logo" />
         </div>
         <h2 className="text-2xl text-center font-bold text-center mb-6">
-          Welcome
+          Get Started
         </h2>
         <h3 className="text-center text-gray-300 mb-5">
           Log in to Planetarium to continue to Dashboard.
@@ -60,4 +60,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

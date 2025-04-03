@@ -1,33 +1,21 @@
 import React from "react";
-<<<<<<< HEAD
-import Navbar from "./components/Navbar";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-
-=======
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Dashboard from "./components/Dashboard";
->>>>>>> 15f36f10e30c9ee13ecec5695ed437a2b074cdb0
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/Signup";
 const App = () => {
   return (
-<<<<<<< HEAD
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
-=======
     <main>
       <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Routes>
       </BrowserRouter>
     </main>
->>>>>>> 15f36f10e30c9ee13ecec5695ed437a2b074cdb0
   );
 };
 

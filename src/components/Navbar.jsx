@@ -1,5 +1,6 @@
 import logo from "../assets/logo.png";
 import { RxCaretDown, RxCaretUp } from "react-icons/rx";
+import { Link } from "react-router-dom";
 /*import { CanvasTexture } from "three";*/
 import Planets from "./Planets";
 import { useState } from "react";
@@ -65,9 +66,11 @@ const Navbar = () => {
                 <button className="ml-10">Pricing</button>
               </div>
               <div className="flex gap-4 my-1">
-                <button className="ml-20 rounded-full py-1 px-4 bg-gray-600 hover:text-gray-300">
-                  Log In
-                </button>
+                <Link to="/login">
+                  <button className="ml-20 rounded-full py-1 px-4 bg-gray-600 hover:text-gray-300">
+                    Log In
+                  </button>
+                </Link>
                 <button className=" rounded-full mr-2 py-1 px-4 bg-gray-600 hover:text-gray-300">
                   Get Started
                 </button>
