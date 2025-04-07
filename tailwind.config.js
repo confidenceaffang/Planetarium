@@ -4,5 +4,16 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [ 
+    function({ addUtilities }) {
+    addUtilities({
+      '.scrollbar-hidden::-webkit-scrollbar': {
+        display: 'none',
+      },
+      '.scrollbar-hidden': {
+        '-ms-overflow-style': 'none',
+        'scrollbar-width': 'none',
+      },
+    });
+  },],
 };

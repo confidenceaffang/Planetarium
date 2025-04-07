@@ -41,6 +41,7 @@ const Login = () => {
   return (
     <section>
       <div>
+        {/*
         <video
           className="fixed top-0 left-0 w-screen h-screen object-cover z-[-1]"
           autoPlay
@@ -48,7 +49,7 @@ const Login = () => {
           muted
         >
           <source src={sample} type="video/mp4" />
-        </video>
+        </video> */}
       </div>
       <div className="flex flex-col lg:flex-row fixed top-1/4 w-full px-8 gap-8 ">
         <div className="flex-1">
