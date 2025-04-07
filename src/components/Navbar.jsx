@@ -71,9 +71,11 @@ const Navbar = () => {
                     Log In
                   </button>
                 </Link>
-                <button className=" rounded-full mr-2 py-1 px-4 bg-gray-600 hover:text-gray-300">
-                  Get Started
-                </button>
+                <Link to="/signup">
+                  <button className=" rounded-full mr-2 py-1 px-4 bg-gray-600 hover:text-gray-300">
+                    Get Started
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

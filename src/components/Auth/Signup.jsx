@@ -1,59 +1,148 @@
 import React from "react";
-import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+import sample from "../../assets/samplevid.mp4";
+import { Typewriter } from "react-simple-typewriter";
+import { useState } from "react";
 
 const Signup = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
+  const [isemail, setisEmail] = useState(false);
+  const [ispassword, setisPassword] = useState(false);
+  const [isname, setisName] = useState(false);
+  const [isconfirmpassword, setisConfirmPassword] = useState(false);
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  const handleSubmit = () => {
+    if (name.trim()) {
+      setisName(true);
+      {
+        isname && <div>correct name</div>;
+      }
+    } else {
+      setisName(false);
+      console.log("incorrect name");
+    }
+
+    if (validateEmail(email)) {
+      setisEmail(true);
+      {
+        isemail && <div>email correct</div>;
+      }
+    } else {
+      console.log("Enter a correct email");
+      setisEmail(false);
+    }
+
+    if (password.trim()) {
+      setisPassword(true);
+      {
+        ispassword && <div>password correct</div>;
+      }
+    } else {
+      console.log("Password cannot be empty");
+      setisPassword(true);
+    }
+
+    if (confirmpassword.trim() && confirmpassword.trim() == password.trim()) {
+      setisConfirmPassword(true);
+    } else {
+      setisConfirmPassword(false);
+      console.log("differnt password");
+    }
+  };
   return (
-    <section className="overflow-hidden flex items-center bg-gray-800 justify-center h-screen w-screen ">
-      <div className="p-8 rounded-l  w-96">
-        <div className="flex justify-center items-center">
-          <img src={logo} width={120} alt="Logo" />
+    <section>
+      <div>
+        {/*
+        <video
+          className="fixed top-0 left-0 w-screen h-screen object-cover z-[-1]"
+          autoPlay
+          loop
+          muted
+        >
+          <source src={sample} type="video/mp4" />
+        </video>*/}
+      </div>
+      <div className="flex flex-col lg:flex-row fixed top-1/4 w-full px-8 gap-8 ">
+        <div className="flex-1">
+          <div className="text-left">
+            <h1 className="text-4xl lg:text-7xl font-bold">
+              <Typewriter
+                words={["Get Started With Planetarium"]}
+                typeSpeed={100}
+              />
+            </h1>
+          </div>
         </div>
-        <h2 className="text-2xl text-center font-bold text-center mb-6">
-          Get Started
-        </h2>
-        <h3 className="text-center text-gray-300 mb-5">
-          Log in to Planetarium to continue to Dashboard
-        </h3>
-        <div className="mb-4">
-          <input
-            type="email"
-            placeholder="Email address*"
-            className="w-full border-2 p-3 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div className="mb-4">
-          <input
-            type="password"
-            placeholder="Password*"
-            className="w-full border-2 p-3 rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        <Link>
-          <span className="text-blue-600">Forgot password?</span>
-        </Link>
-
-        <button className="mt-5 w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
-          Continue
-        </button>
-        <div className="mt-5">
-          <h2>
-            Don't have an account?
-            <Link to="/signup">
-              <span className="text-blue-600"> Sign up </span>
-            </Link>
-          </h2>
-        </div>
-        <div className="mt-5 ">
-          <h3 className="text-center">OR</h3>
-        </div>
-        <div className="flex ">
-          <button className=" flex mt-5 border-2 rounded-l w-full items-center justify-center py-3 rounded-xl font-semibold">
-            <FcGoogle className="mr-3 flex flex-row text-2xl text-center justify-center items-center text-center " />
-            Continue with Google
-          </button>
+        <div className="flex-1 items-center justof-center text-center">
+          <h1 className="text-4xl lg:text-6xl font-bold mb-10">Sign up Form</h1>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+              console.log("submitted");
+            }}
+          >
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full opacity-55 max-w-md p-3 mb-8 rounded-xl text-xl text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              minLength={3}
+              maxLength={70}
+              placeholder="Enter your name"
+            />
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full opacity-55 max-w-md p-3 mb-8 rounded-xl text-xl text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              minLength={3}
+              maxLength={70}
+              placeholder="Email Address"
+            />
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full opacity-55 max-w-md p-3 mb-8 rounded-xl text-xl text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              minLength={3}
+              maxLength={70}
+              placeholder="Password"
+            />
+            <input
+              type="password"
+              id="confirmpassword"
+              value={confirmpassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full opacity-55 max-w-md p-3 mb-8 rounded-xl text-xl text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              minLength={3}
+              maxLength={70}
+              placeholder="Confirm Password"
+            />
+            <button
+              type="submit"
+              className="w-full max-w-md p-3 rounded-xl text-xl text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              Sign Up
+            </button>
+          </form>
         </div>
       </div>
     </section>

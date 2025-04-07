@@ -1,58 +1,102 @@
 import React from "react";
-import { FcGoogle } from "react-icons/fc";
-import logo from "../../assets/logo.png";
-import { Link } from "react-router-dom";
+import sample from "../../assets/samplevid.mp4";
+import { Typewriter } from "react-simple-typewriter";
+import { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isemail, setisEmail] = useState(false);
+  const [ispassword, setisPassword] = useState(false);
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+
+  const handleSubmit = () => {
+    if (validateEmail(email)) {
+      setisEmail(true);
+      {
+        isemail && "email correct";
+      }
+    } else {
+      console.log("Enter a correct email");
+      setisEmail(false);
+    }
+
+    if (password.trim()) {
+      setisPassword(true);
+      {
+        ispassword && "password correct";
+      }
+    } else {
+      console.log("Password cannot be empty");
+      setisPassword(true);
+    }
+  };
   return (
-    <section className="overflow-hidden flex text-white items-center bg-black justify-center h-screen w-screen ">
-      <div className="p-4 rounded-l w-96">
-        <h1 className="text-4xl text-white mb-10 text-center font-bold text-center mb-6">
-          Welcome Back
-        </h1>
-        <div className="flex mb-1 ">
-          <button className=" flex mt-5 border-2 w-full items-center text-white justify-center py-3 rounded-full font-semibold">
-            <FcGoogle className="mr-3 flex flex-row text-2xl text-center justify-center items-center text-center " />
-            Continue with Google
-          </button>
+    <section>
+      <div>
+        <video
+          className="fixed top-0 left-0 w-screen h-screen object-cover z-[-1]"
+          autoPlay
+          loop
+          muted
+        >
+          <source src={sample} type="video/mp4" />
+        </video>
+      </div>
+      <div className="flex flex-col lg:flex-row fixed top-1/4 w-full px-8 gap-8 ">
+        <div className="flex-1">
+          <div className="text-left">
+            <h1 className="text-4xl lg:text-7xl font-bold">
+              <Typewriter words={["Welcome Back"]} typeSpeed={100} />
+            </h1>
+          </div>
         </div>
-        <div className="flex mb-10 ">
-          <button className=" flex mt-5 border-2 text-white text-center w-full items-center justify-center py-3 rounded-full font-semibold">
-            Continue with Phone Number
-          </button>
-        </div>
+        <div className="flex-1 items-center justof-center text-center">
+          <h1 className="text-4xl lg:text-6xl font-bold mb-10">Sign In Form</h1>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmit();
+              console.log("Submitted");
+            }}
+          >
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full opacity-55 max-w-md p-3 mb-8 rounded-xl text-xl text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              minLength={3}
+              maxLength={70}
+              placeholder="Email Address"
+            />
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full opacity-55 max-w-md p-3 mb-8 rounded-xl text-xl text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+              minLength={3}
+              maxLength={70}
+              placeholder="Password"
+            />
 
-        <div className="mb-4">
-          <label className="mb-10 text-sm text-white">Email or username</label>
-          <input
-            type="email"
-            placeholder="Email or username"
-            className="w-full border-2 p-3 bg-black rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label className="mb-10 text-sm text-white">Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            className="w-full border-2 p-3 bg-black rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        <Link>
-          <span className="text-blue-600">Forgot password?</span>
-        </Link>
-
-        <button className="mt-5 w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
-          Continue
-        </button>
-        <div className="mt-5">
-          <h2 className="text-white text-sm">
-            Don't have an account?
-            <Link to="/signup">
-              <span className="text-blue-600"> Sign up </span>
-            </Link>
-          </h2>
+            <button
+              type="submit"
+              className="w-full max-w-md p-3 rounded-xl text-xl text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              Sign In
+            </button>
+          </form>
         </div>
       </div>
     </section>
