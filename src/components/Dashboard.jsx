@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom'
 import logo from "../assets/logo.png"
 import { LuLayoutDashboard } from 'react-icons/lu'
 import { CiCalendar } from 'react-icons/ci'
-import { BsCopy } from 'react-icons/bs'
+import { BsCopy, BsPersonCircle } from 'react-icons/bs'
 import { IoChatbubbleEllipsesOutline, IoBookOutline, IoPlanetOutline } from 'react-icons/io5'
 import { PiUsersThreeThin } from 'react-icons/pi'
 import { CgProfile } from 'react-icons/cg'
@@ -13,6 +13,7 @@ import { FaEarthAmericas } from "react-icons/fa6"
 import { useState } from 'react'
 import { FaMoon } from 'react-icons/fa6'
 import {FiSun} from "react-icons/fi"
+import { CiSearch } from 'react-icons/ci'
 
 const navLinks = [
   { label: "Dashboard", icon: <LuLayoutDashboard />, path: "/dashboard" },
@@ -36,8 +37,8 @@ const Dashboard = () => {
   const [darkMode, setDarkMode] = useState(false)
 
   return (
-    <main className={`${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-700"} min-h-screen flex overflow-hidden`}>
-
+    <main className={`${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-700"} min-h-screen  overflow-hidden`}>
+      <div className='flex'>
       <aside className={`w-[15%] font-semibold sticky top-0 h-screen scrollbar-hidden overflow-y-auto border-r   ${darkMode ? "border-gray-700" : "border-gray-200"}`}>
    
         <div className={`${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-700"} flex sticky top-0  p-6 items-center mb-10 space-x-2`}>
@@ -45,7 +46,7 @@ const Dashboard = () => {
           <span className="text-2xl font-bold">Dashboard</span>
         </div>
         
-        <div className=' p-6'>
+        <div className='p-6'>
         <div className="space-y-8">
    
           <div className="space-y-3">
@@ -89,12 +90,46 @@ const Dashboard = () => {
         </div>
         </div>
       </aside>
-
-      <section className="flex-1 ">
-        <nav className='fixed p-2 mb-4 border-b font-sm border-gray-700 w-full top-0'>
-          dd
+      
+      <section className="flex w-full">
+        <nav className='p-2 mb-4  border-b  w-full  font-sm border-gray-700 top-0'>
+          <div className='border border-gray-700 rounded-3xl items-center text-center justify-between  flex'>
+        <div className='p-3 flex'>
+          <CiSearch />
+            <input type='search ' className='text-2xl ml-5 text-left p-2 rounded-xl '/>
+            </div>
+          <div className='flex'>
+          <button
+            onClick={(e) => {e.preventDefault();
+              setDarkMode(!darkMode)}}
+            className={`p-1 rounded-full border-2 ${darkMode ?"border-gray-700": "border-gray-400"} flex items-center`}
+          >
+            <div
+              className="rounded-full shadow transform transition-transform duration-300"
+            >
+              {darkMode ? <FiSun className=' text-yellow-700 text-4xl' /> : <FaMoon className='text-black text-4xl'  />}
+            </div>
+          </button>
+          <div>
+            <BsPersonCircle  className='text-5xl mx-10'/>
+          </div>
+          </div>
+          </div>
         </nav>
       </section>
+      </div>
+      <section className='grid grid-cols-3 top-1/2'>
+          <div className=''>
+            Users
+          </div>
+          <div>
+            Revenue
+          </div>
+          <div>
+            New orders
+          </div>
+        </section>
+        
     </main>
   );
 };
